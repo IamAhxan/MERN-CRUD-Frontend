@@ -12,7 +12,7 @@ function UpdateUsers() {
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('https://mern-crud-api-rosy.vercel.app//getUser/' + id)
+        axios.get('https://mern-crud-lg1xt8al7-ahsans-projects-3f5df04c.vercel.app/getUser/' + id)
             .then(result => {
                 console.log(result)
                 setName(result.data.name)
@@ -26,7 +26,7 @@ function UpdateUsers() {
 
     const update = (e) => {
         e.preventDefault()
-        axios.put("https://mern-crud-api-rosy.vercel.app//updateUser/" + id, { name, email, age })
+        axios.put("https://mern-crud-lg1xt8al7-ahsans-projects-3f5df04c.vercel.app/updateUser/" + id, { name, email, age })
             .then(result => {
                 console.log(result)
                 navigate('/')
