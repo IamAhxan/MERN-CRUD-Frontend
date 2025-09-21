@@ -18,9 +18,9 @@ function Users() {
         console.log(user)
     }, [])
 
-    const filteredUsers = user.filter((u) =>
-        (u?.name ?? "").toLowerCase().includes((search ?? "").toLowerCase())
-    );
+    // const filteredUsers = user.filter((u) =>
+    //     (u?.name ?? "").toLowerCase().includes((search ?? "").toLowerCase())
+    // );
 
 
     const handleDelete = (id) => {
@@ -58,7 +58,7 @@ function Users() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredUsers.map((u) => (
+                        {user.map((u) => (
                             <tr key={String(u._id)}>
                                 <td>{u.name}</td>
                                 <td>{u.email}</td>
