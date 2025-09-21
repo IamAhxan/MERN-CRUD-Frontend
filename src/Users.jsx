@@ -9,10 +9,11 @@ function Users() {
     useEffect(() => {
         axios.get('https://mern-crud-lg1xt8al7-ahsans-projects-3f5df04c.vercel.app/')
             .then(result => {
-                setUser(Array.isArray(result.data) ? result.data : [])
+                console.log("Backend response:", result.data);  // 👈 log here
+                setUser(Array.isArray(result.data) ? result.data : []);
             })
-            .catch(err => console.log(err))
-    }, [])
+            .catch(err => console.log(err));
+    }, []);
 
     const filteredUsers = user.filter((u) =>
         (u?.name ?? "").toLowerCase().includes(search.toLowerCase())
