@@ -11,7 +11,7 @@ function CreateUsers() {
 
     const submit = (e) => {
         e.preventDefault()
-        axios.post("https://mern-crud-lg1xt8al7-ahsans-projects-3f5df04c.vercel.app/createUser", { name, email, age }).then(result => {
+        axios.post("https://mern-crud-api-rosy.vercel.app/createUser", { name, email, age }).then(result => {
             console.log(result)
             navigate('/')
 

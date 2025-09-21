@@ -7,9 +7,9 @@ function Users() {
     const [search, setSearch] = useState("")
 
     useEffect(() => {
-        axios.get('https://mern-crud-lg1xt8al7-ahsans-projects-3f5df04c.vercel.app/')
+        axios.get('')
             .then(result => {
-                console.log("Backend response:", result.data);  // 👈 log here
+                console.log("Backend response:", result.data);
                 setUser(Array.isArray(result.data) ? result.data : []);
             })
             .catch(err => console.log(err));
@@ -20,7 +20,7 @@ function Users() {
     )
 
     const handleDelete = (id) => {
-        axios.delete('https://mern-crud-lg1xt8al7-ahsans-projects-3f5df04c.vercel.app/deleteUser/' + id)
+        axios.delete('https://mern-crud-api-rosy.vercel.app/deleteUser/' + id)
             .then(res => {
                 setUser(prev => prev.filter(u => u._id !== id))
             })
