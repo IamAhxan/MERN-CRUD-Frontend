@@ -4,39 +4,30 @@ import axios from 'axios'
 
 function Users() {
     const [user, setUser] = useState([])
-    const [search, setSearch] = useState()
-    // const [filteredUsers, setFilteredUsers] = useState([])
+    const [search, setSearch] = useState("")
 
     useEffect(() => {
         axios.get('https://mern-crud-api-rosy.vercel.app/')
             .then(result => {
-                setUser(result.data)
-                setFilteredUsers(result.data)
+                setUser(Array.isArray(result.data) ? result.data : [])
             })
             .catch(err => console.log(err))
-
-        console.log(user)
     }, [])
 
-    // const filteredUsers = user.filter((u) =>
-    //     (u?.name ?? "").toLowerCase().includes((search ?? "").toLowerCase())
-    // );
-
+    const filteredUsers = user.filter((u) =>
+        (u?.name ?? "").toLowerCase().includes(search.toLowerCase())
+    )
 
     const handleDelete = (id) => {
         axios.delete('https://mern-crud-api-rosy.vercel.app/deleteUser/' + id)
             .then(res => {
-                console.log(res);
-
-                setUser(prev => prev.filter(u => u._id !== id));
+                setUser(prev => prev.filter(u => u._id !== id))
             })
-            .catch(err => console.log(err));
-    };
-
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className='d-flex vh-100 bg-primary justify-content-center align-items-center'>
-
             <div className=' w-50 bg-white rounded p-3'>
                 <div className="d-flex  justify-content-between">
                     <Link to='/create' className='btn btn-success '>Add +</Link>
@@ -45,7 +36,8 @@ function Users() {
                         id="search"
                         placeholder="Enter something"
                         className="form-control w-50 border-primary"
-                        onChange={(e) => { setSearch(e.target.value) }}
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
                     />
                 </div>
                 <table className='table'>
@@ -58,7 +50,7 @@ function Users() {
                         </tr>
                     </thead>
                     <tbody>
-                        {user.map((u) => (
+                        {filteredUsers.map((u) => (
                             <tr key={String(u._id)}>
                                 <td>{u.name}</td>
                                 <td>{u.email}</td>
