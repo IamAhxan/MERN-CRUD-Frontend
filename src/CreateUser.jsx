@@ -11,7 +11,7 @@ function CreateUsers() {
 
     const submit = (e) => {
         e.preventDefault()
-        axios.post("https://crud-operations-mern-backend.onrender.com/createUser", { name, email, age }).then(result => {
+        axios.post("https://mern-crud-api-rosy.vercel.app/createUser", { name, email, age }).then(result => {
             console.log(result)
             navigate('/')
 

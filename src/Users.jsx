@@ -8,7 +8,7 @@ function Users() {
     // const [filteredUsers, setFilteredUsers] = useState([])
 
     useEffect(() => {
-        axios.get('https://crud-operations-mern-backend.onrender.com')
+        axios.get('https://mern-crud-api-rosy.vercel.app/')
             .then(result => {
                 setUser(result.data)
                 setFilteredUsers(result.data)
@@ -24,7 +24,7 @@ function Users() {
 
 
     const handleDelete = (id) => {
-        axios.delete('https://crud-operations-mern-backend.onrender.com/deleteUser/' + id)
+        axios.delete('https://mern-crud-api-rosy.vercel.app/deleteUser/' + id)
             .then(res => {
                 console.log(res);
 
