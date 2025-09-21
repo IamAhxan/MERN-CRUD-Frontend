@@ -7,7 +7,7 @@ function Users() {
     const [search, setSearch] = useState("")
 
     useEffect(() => {
-        axios.get('')
+        axios.get('https://mern-crud-api-rosy.vercel.app/')
             .then(result => {
                 console.log("Backend response:", result.data);
                 setUser(Array.isArray(result.data) ? result.data : []);
